@@ -117,4 +117,4 @@ function resetGame() {
     gameLoop();
 }
 
-gameLoop();
+gameLoop
