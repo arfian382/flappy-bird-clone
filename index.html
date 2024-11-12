@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Projek Kelompok 2 (XII EKBIS 1)</title>
+    <title>Dino Game</title>
     <style>
         body {
             margin: 0;
             overflow: hidden;
             background: #f7f7f7;
+            text-align: center;
         }
         #gameCanvas {
             background: #ffffff;
@@ -16,10 +17,18 @@
             margin: 0 auto;
             border: 1px solid #000;
         }
+        #refreshButton {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <canvas id="gameCanvas" width="800" height="200"></canvas>
+    <button id="refreshButton">Restart Game</button>
     <script src="game.js"></script>
 </body>
 </html>
