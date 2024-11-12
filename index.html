@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flappy Bird Clone</title>
+    <title>Dino Game</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
-            background-color: #70c5ce;
+            overflow: hidden;
+            background: #f7f7f7;
         }
-        canvas {
-            border: 2px solid #000;
+        #gameCanvas {
+            background: #ffffff;
+            display: block;
+            margin: 0 auto;
+            border: 1px solid #000;
         }
     </style>
 </head>
 <body>
-    <canvas id="gameCanvas" width="400" height="600"></canvas>
-    <script src="game.js" defer></script>
+    <canvas id="gameCanvas" width="800" height="200"></canvas>
+    <script src="game.js"></script>
 </body>
 </html>
