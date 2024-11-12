@@ -1,6 +1,5 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-const refreshButton = document.getElementById('refreshButton');
 
 let dino = {
     x: 50,
@@ -16,7 +15,6 @@ let dino = {
 let obstacles = [];
 let score = 0;
 let gameOver = false;
-let gameSpeed = 5; // Kecepatan permainan
 
 function drawDino() {
     ctx.fillStyle = 'green';
@@ -41,14 +39,14 @@ function updateObstacles() {
     }
 
     obstacles.forEach(obstacle => {
-        obstacle.x -= gameSpeed; // Gunakan gameSpeed untuk menggerakkan rintangan
+        obstacle.x -= 5;
 
         if (obstacle.x < 0) {
             obstacles.shift();
             score++;
         }
 
-        // Deteksi tabrakan
+        // Collision detection
         if (dino.x < obstacle.x + obstacle.width &&
             dino.x + dino.width > obstacle.x &&
             dino.y < obstacle.y + obstacle.height &&
@@ -69,7 +67,6 @@ function update() {
     if (gameOver) {
         ctx.fillStyle = 'black';
         ctx.fillText("Game Over! Score: " + score, canvas.width / 4, canvas.height / 2);
-        refreshButton.style.display = 'block'; // Tampilkan tombol refresh
         return;
     }
 
@@ -100,23 +97,5 @@ function gameLoop() {
 document.addEventListener('touchstart', function(event) {
     jump();
 });
-
-// Event listener untuk tombol refresh
-refreshButton.addEventListener('click', function() {
-    resetGame();
-});
-
-// Fungsi untuk mereset permainan
-function resetGame() {
-    dino.y = 150;
-    dino.velocityY = 0;
-    dino.isJumping = false;
-    obstacles = [];
-    score = 0;
-    gameOver = false;
-    gameSpeed = 5; // Reset kecepatan permainan
-    refreshButton.style.display = 'none'; // Sembunyikan tombol refresh
-    gameLoop();
-}
 
 gameLoop();
