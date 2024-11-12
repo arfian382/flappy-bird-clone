@@ -1,5 +1,6 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
+const refreshButton = document.getElementById('refreshButton');
 
 let dino = {
     x: 50,
@@ -67,6 +68,7 @@ function update() {
     if (gameOver) {
         ctx.fillStyle = 'black';
         ctx.fillText("Game Over! Score: " + score, canvas.width / 4, canvas.height / 2);
+        refreshButton.style.display = 'block'; // Tampilkan tombol refresh
         return;
     }
 
@@ -97,5 +99,22 @@ function gameLoop() {
 document.addEventListener('touchstart', function(event) {
     jump();
 });
+
+// Event listener untuk tombol refresh
+refreshButton.addEventListener('click', function() {
+    resetGame();
+});
+
+// Fungsi untuk mereset permainan
+function resetGame() {
+    dino.y = 150;
+    dino.velocityY = 0;
+    dino.isJumping = false;
+    obstacles = [];
+    score = 0;
+    gameOver = false;
+    refreshButton.style.display = 'none'; // Sembunyikan tombol refresh
+    gameLoop();
+}
 
 gameLoop();
