@@ -16,6 +16,7 @@ let dino = {
 let obstacles = [];
 let score = 0;
 let gameOver = false;
+let gameSpeed = 5; // Kecepatan permainan
 
 function drawDino() {
     ctx.fillStyle = 'green';
@@ -40,14 +41,14 @@ function updateObstacles() {
     }
 
     obstacles.forEach(obstacle => {
-        obstacle.x -= 5;
+        obstacle.x -= gameSpeed; // Gunakan gameSpeed untuk menggerakkan rintangan
 
         if (obstacle.x < 0) {
             obstacles.shift();
             score++;
         }
 
-        // Collision detection
+        // Deteksi tabrakan
         if (dino.x < obstacle.x + obstacle.width &&
             dino.x + dino.width > obstacle.x &&
             dino.y < obstacle.y + obstacle.height &&
@@ -113,8 +114,9 @@ function resetGame() {
     obstacles = [];
     score = 0;
     gameOver = false;
+    gameSpeed = 5; // Reset kecepatan permainan
     refreshButton.style.display = 'none'; // Sembunyikan tombol refresh
     gameLoop();
 }
 
-gameLoop
+gameLoop();
